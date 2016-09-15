@@ -80,4 +80,9 @@
     <string name="system_theme_dark">Dark</string>
     <string name="black_theme_title">Use black theme</string>
     <string name="black_theme_summary">Use black theme in place of dark</string>
+    
+    <!-- Notification light settings -->
+    <string name="lights_category_title">Light settings</string>
+    <string name="notification_light_title">Notification light</string>
+    <string name="battery_light_title">Battery light</string>
 </resources>
