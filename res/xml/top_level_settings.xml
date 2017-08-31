@@ -21,6 +21,14 @@
     android:key="top_level_settings">
 
     <Preference
+        android:key="top_level_reloaded_settings"
+        android:title="@string/reloaded_xtras_title"
+        android:summary="@string/reloaded_xtras_summary"
+        android:icon="@drawable/ic_homepage_reloaded"
+        android:order="-130"
+        android:fragment="com.reloaded.settings.ReloadedXtras"/>
+
+    <Preference
         android:key="top_level_network"
         android:title="@string/network_dashboard_title"
         android:summary="@string/summary_placeholder"

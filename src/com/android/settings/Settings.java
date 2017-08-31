@@ -243,4 +243,7 @@ public class Settings extends SettingsActivity {
      */
     public static class MediaControlsSettingsActivity extends SettingsActivity {}
 
+    // ReloadedSettings
+    public static class ReloadedXtrassActivity extends SettingsActivity {}
+
 }
