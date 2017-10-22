@@ -45,6 +45,9 @@
     <string name="incall_vibrate_call_wait_title">Vibrate on call waiting</string>
     <string name="incall_vibrate_disconnect_title">Vibrate on disconnect</string>
     
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Screenshot sound</string>
+
     <!-- Playback control -->
     <string name="volume_rocker_music_controls_category">Playback options</string>
     <string name="volume_rocker_music_controls_title">Playback control</string>
