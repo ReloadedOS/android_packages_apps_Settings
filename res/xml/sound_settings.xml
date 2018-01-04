@@ -189,6 +189,13 @@
           android:key="emergency_tone"
           android:title="@string/emergency_tone_title"
           android:summary="%s" />
+
+        <com.android.settings.reloaded.SystemSettingSwitchPreference
+            android:key="notification_sound_vib_screen_on"
+            android:title="@string/notification_sound_vib_screen_on_title"
+            android:summary="@string/notification_sound_vib_screen_on_summary"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
     
      <!-- Incall vibrate options -->
