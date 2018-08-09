@@ -31,5 +31,8 @@
     <color name="sim_color_picker_list_text_color">@android:color/black</color>
     <color name="sim_color_picker_carrier_text_color">@android:color/black</color>
     <color name="sim_color_picker_number_text_color">@android:color/black</color>
+
+    <!-- App ops -->
+    <color name="switch_accent_color">@*android:color/accent_device_default_light</color>
     
 </resources>

@@ -110,6 +110,14 @@
 
     </PreferenceCategory>
 
+      <!-- Privacy Guard -->
+    <Preference
+        android:icon="@drawable/ic_settings_appops"
+        android:key="privacy_guard_manager"
+        android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
+        android:title="@string/app_ops_category" >
+    </Preference>
+
     <PreferenceCategory
         android:order="40"
         android:key="security_settings_device_admin_category">
