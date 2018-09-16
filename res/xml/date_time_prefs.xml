@@ -77,4 +77,10 @@
             android:title="@string/date_time_24hour" />
     </PreferenceCategory>
 
+     <Preference
+        android:fragment="com.android.settings.reloaded.fragments.ClockDateSettings"
+        android:icon="@drawable/ic_status_bar_clock"
+        android:key="status_bar_clock"
+        android:title="@string/status_bar_clock_title" />
+
 </PreferenceScreen>
