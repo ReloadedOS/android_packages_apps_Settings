@@ -14,32 +14,32 @@
  * limitations under the License
  */
 
-package com.android.settings.development;
+package com.android.settings.display;
 
 import android.app.UiModeManager;
 import android.content.Context;
-import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 
 import com.android.settings.R;
+import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settings.core.PreferenceControllerMixin;
-import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
-public class DarkUIPreferenceController extends DeveloperOptionsPreferenceController
+public class DarkUIPreferenceController extends AbstractPreferenceController
         implements Preference.OnPreferenceChangeListener, PreferenceControllerMixin {
 
     private static final String DARK_UI_KEY = "dark_ui_mode";
+
     private final UiModeManager mUiModeManager;
 
     public DarkUIPreferenceController(Context context) {
-        this(context, context.getSystemService(UiModeManager.class));
+        super(context);
+        mUiModeManager = context.getSystemService(UiModeManager.class);
     }
 
-    @VisibleForTesting
-    DarkUIPreferenceController(Context context, UiModeManager uiModeManager) {
-        super(context);
-        mUiModeManager = uiModeManager;
+    @Override
+    public boolean isAvailable() {
+        return true;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class DarkUIPreferenceController extends DeveloperOptionsPreferenceContro
     }
 
     private String modeToDescription(int mode) {
-        String[] values = mContext.getResources().getStringArray(R.array.dark_ui_mode_entries);
+        String[] values = mContext.getResources().getStringArray(R.array.system_theme_entries);
         switch (mode) {
             case UiModeManager.MODE_NIGHT_AUTO:
                 return values[0];

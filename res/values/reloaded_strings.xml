@@ -64,4 +64,18 @@
     <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Tap to sleep</string>
     <string name="status_bar_double_tap_to_sleep_summary">Double-tap on the status bar or lockscreen to turn off the display</string>
+
+    <!-- Themes -->
+    <string name="theme_category_title">Theme options</string>
+    <string name="accent_picker_dialog_title">Select an accent color</string>
+    <string name="theme_accent_picker_title">Accent color</string>
+    <string name="theme_accent_picker_summary">Select system theme accent color</string>
+    <string name="theme_accent_picker_default">Default</string>
+    <string name="accent_picker_material_colors">Material palette</string>
+    <string name="accent_picker_custom_colors">User requested</string>
+
+    <!-- System theme -->
+    <string name="system_theme_wallpaper">Automatic (based on time of day)</string>
+    <string name="system_theme_light">Light</string>
+    <string name="system_theme_dark">Dark</string>
 </resources>
