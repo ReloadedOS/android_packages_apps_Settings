@@ -163,6 +163,12 @@
             android:entries="@array/system_theme_entries"
             android:entryValues="@array/system_theme_values" />
 
+        <SwitchPreference
+            android:key="use_black_theme"
+            android:title="@string/black_theme_title"
+            android:summary="@string/black_theme_summary"
+            android:defaultValue="false" />
+
         <Preference
             android:key="accent_picker"
             android:title="@string/theme_accent_picker_title" />
