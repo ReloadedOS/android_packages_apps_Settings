@@ -27,6 +27,7 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.AccentPickerPreferenceController;
 import com.android.settings.display.AmbientDisplayPreferenceController;
 import com.android.settings.display.AmbientDisplayCustomPreferenceController;
+import com.android.settings.display.BlackThemePreferenceController;
 import com.android.settings.display.BrightnessLevelPreferenceController;
 import com.android.settings.display.CameraGesturePreferenceController;
 import com.android.settings.display.ColorModePreferenceController;
@@ -100,6 +101,7 @@ public class DisplaySettings extends DashboardFragment {
                 new AmbientDisplayConfiguration(context),
                 KEY_AMBIENT_DISPLAY));
         controllers.add(new AmbientDisplayCustomPreferenceController(context));
+        controllers.add(new BlackThemePreferenceController(context));
         controllers.add(new TapToWakePreferenceController(context));
         controllers.add(new ProximityOnWakePreferenceController(context));
         controllers.add(new TimeoutPreferenceController(context, KEY_SCREEN_TIMEOUT));
