@@ -128,6 +128,10 @@
     <string name="global_actions_advanced_reboot_title">Advanced restart</string>
     <string name="global_actions_advanced_reboot_summary">Show recovery and bootloader restart options</string>
 
+    <!-- 4G icon -->
+    <string name="show_fourg_icon_title">4G icon</string>
+    <string name="show_fourg_icon_summary">Display 4G icon instead of LTE icon</string>
+
     <!-- Notification light settings -->
     <string name="lights_category_title">Light settings</string>
     <string name="notification_light_title">Notification light</string>
