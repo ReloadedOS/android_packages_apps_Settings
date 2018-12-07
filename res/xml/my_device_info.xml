@@ -157,11 +157,26 @@
         android:order="42"
         android:title="@string/fcc_equipment_id"
         android:summary="@string/summary_placeholder"/>
+        
+    <!-- Reloaded-CAF version -->
+    <Preference
+        android:key="reloaded_version"
+        android:order="43"
+        android:title="@string/reloaded_version"
+        android:summary="@string/reloaded_version_default"
+        settings:allowDividerAbove="true" />
+
+    <!-- CAF revision -->
+    <Preference
+        android:key="caf_version"
+        android:order="44"
+        android:title="@string/caf_version"
+        android:summary="@string/caf_version_default" />
 
     <!-- Build number -->
     <Preference
         android:key="build_number"
-        android:order="43"
+        android:order="45"
         android:title="@string/build_number"
         android:summary="@string/summary_placeholder"
         settings:allowDividerAbove="true"/>
