@@ -19,4 +19,8 @@
     <!-- Reloaded version -->
     <string name="reloaded_version">Reloaded version</string>
     <string name="reloaded_version_default">Unknown</string>
+
+    <string name="caf_version">CAF revision</string>
+    <string name="caf_version_default">Unknown</string>
+
 </resources>
