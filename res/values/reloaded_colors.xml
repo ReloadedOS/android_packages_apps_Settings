@@ -18,5 +18,8 @@
     <!-- Accent picker -->
     <color name="accent_picker_white_accent">@android:color/white</color>
     <color name="accent_picker_dark_accent">@android:color/black</color>
+    
+    <color name="switch_bar_bg_activated_dark">#242424</color>
+    <color name="switch_bar_bg_deactivated_dark">#333333</color>
 </resources>
 
