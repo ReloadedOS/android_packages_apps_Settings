@@ -80,11 +80,17 @@
     <string name="system_theme_dark">Dark</string>
     <string name="black_theme_title">Use black theme</string>
     <string name="black_theme_summary">Use black theme in place of dark</string>
-    
+
     <!-- Notification light settings -->
     <string name="lights_category_title">Light settings</string>
     <string name="notification_light_title">Notification light</string>
     <string name="battery_light_title">Battery light</string>
     
     <string name="gesture_double_tap_power_torch_toast">Screen off torch gesture is now disabled</string>
+
+    <!-- Reloaded Perf Modes -->
+    <string name="reloaded_perf_modes">Performance Mode</string>
+    <string name="reloaded_perf_modes_battery">Battery</string>
+    <string name="reloaded_perf_modes_auto">Auto</string>
+    <string name="reloaded_perf_modes_performance">Performance</string>
 </resources>

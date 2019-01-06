@@ -49,6 +49,12 @@
         android:title="@string/battery_percentage"
         android:summary="@string/battery_percentage_description" />
 
+    <ListPreference
+        android:key="reloaded_perf_modes"
+        android:title="@string/reloaded_perf_modes"
+        android:entries="@array/reloaded_perf_modes_entries"
+        android:entryValues="@array/reloaded_perf_modes_values"
+        settings:controller="com.android.settings.reloaded.PerfModes" />
 
     <com.android.settings.fuelgauge.PowerGaugePreference
         android:key="last_full_charge"
