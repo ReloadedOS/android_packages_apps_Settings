@@ -73,6 +73,14 @@
     <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Tap to sleep</string>
     <string name="status_bar_double_tap_to_sleep_summary">Double-tap on the status bar or lockscreen to turn off the display</string>
+    
+    
+    <!-- Reloaded Perf Modes -->
+    <string name="reloaded_perf_modes">Performance Mode</string>
+    <string name="reloaded_perf_modes_battery">Extreme Battery</string>
+    <string name="reloaded_perf_modes_balanced">Default</string>
+    <string name="reloaded_perf_modes_gaming">Gaming</string>
+    <string name="reloaded_perf_modes_performance">High Performance</string>
 
     <!-- Global Actions -->
     <string name="advanced_reboot_category">Advanced reboot</string>
