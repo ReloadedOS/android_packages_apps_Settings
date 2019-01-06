@@ -31,4 +31,18 @@
         <item>yes</item>
         <item>no</item>
     </string-array>
+
+    <!-- Titles for perf mode preference. -->
+    <string-array name="reloaded_perf_modes_entries" >
+        <item>@string/reloaded_perf_modes_battery</item>
+        <item>@string/reloaded_perf_modes_auto</item>
+        <item>@string/reloaded_perf_modes_performance</item>
+    </string-array>
+
+    <!-- Values for perf mode preference. -->
+    <string-array name="reloaded_perf_modes_values" translatable="false" >
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>
