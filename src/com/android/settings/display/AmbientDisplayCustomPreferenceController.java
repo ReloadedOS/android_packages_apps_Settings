@@ -16,7 +16,11 @@ package com.android.settings.display;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ComponentName;
+import android.provider.Settings;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceGroup;
+import android.support.v7.preference.PreferenceManager;
+import android.support.v7.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -26,6 +30,7 @@ import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 
 import java.util.List;
 
+import static android.provider.Settings.Secure.DOZE_ENABLED;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_AMBIENT_DISPLAY;
 
 public class AmbientDisplayCustomPreferenceController extends AbstractPreferenceController implements PreferenceControllerMixin {
@@ -33,10 +38,13 @@ public class AmbientDisplayCustomPreferenceController extends AbstractPreference
     static final String KEY_AMBIENT_CUSTOM = "ambient_display_custom";
 
     private final MetricsFeatureProvider mMetricsFeatureProvider;
+    
+    private Context mContext;
 
     public AmbientDisplayCustomPreferenceController(Context context) {
         super(context);
         mMetricsFeatureProvider = FeatureFactory.getFactory(context).getMetricsFeatureProvider();
+        mContext = context;
     }
 
     @Override
@@ -47,6 +55,15 @@ public class AmbientDisplayCustomPreferenceController extends AbstractPreference
     @Override
     public String getPreferenceKey() {
         return KEY_AMBIENT_CUSTOM;
+    }
+    
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        if(isAvailable()){
+            Preference toRemove = screen.findPreference("ambient_display");
+            screen.removePreference(toRemove);
+        }
     }
 
     @Override
@@ -69,6 +86,16 @@ public class AmbientDisplayCustomPreferenceController extends AbstractPreference
     @Override
     public void updateNonIndexableKeys(List<String> keys) {
         keys.add(getPreferenceKey());
+    }
+
+    @Override
+    public void updateState(Preference preference) {
+        super.updateState(preference);
+        if (Settings.Secure.getInt(mContext.getContentResolver(), DOZE_ENABLED, 1) != 0) {
+            preference.setSummary(R.string.switch_on_text);
+        } else {
+            preference.setSummary(R.string.switch_off_text);
+        }
     }
 
 }
