@@ -32,6 +32,7 @@ import com.android.settings.display.NightModePreferenceController;
 import com.android.settings.display.ScreenSaverPreferenceController;
 import com.android.settings.display.ShowOperatorNamePreferenceController;
 import com.android.settings.display.TapToWakePreferenceController;
+import com.android.settings.display.ProximityOnWakePreferenceController;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.display.TimeoutPreferenceController;
 import com.android.settings.display.VrDisplayPreferenceController;
@@ -48,6 +49,7 @@ public class DisplaySettings extends DashboardFragment {
     private static final String TAG = "DisplaySettings";
 
     public static final String KEY_DISPLAY_SIZE = "display_settings_screen_zoom";
+    public static final String KEY_PROXIMITY_ON_WAKE = "proximity_on_wake";
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_AMBIENT_DISPLAY = "ambient_display";
@@ -92,6 +94,7 @@ public class DisplaySettings extends DashboardFragment {
                 new AmbientDisplayConfiguration(context),
                 KEY_AMBIENT_DISPLAY));
         controllers.add(new TapToWakePreferenceController(context));
+        controllers.add(new ProximityOnWakePreferenceController(context));
         controllers.add(new TimeoutPreferenceController(context, KEY_SCREEN_TIMEOUT));
         controllers.add(new VrDisplayPreferenceController(context));
         controllers.add(new ShowOperatorNamePreferenceController(context));
@@ -122,6 +125,11 @@ public class DisplaySettings extends DashboardFragment {
                     keys.add(WallpaperPreferenceController.KEY_WALLPAPER);
                     keys.add(KEY_NIGHT_DISPLAY);
                     keys.add(KEY_AUTO_BRIGHTNESS);
+                    
+                    if(context.getResources().getBoolean(com.android.internal.R.bool.config_proximityCheckOnWake)){
+                        keys.add(KEY_PROXIMITY_ON_WAKE);
+                    }
+                    
                     return keys;
                 }
 
