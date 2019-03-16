@@ -98,4 +98,9 @@
     <string name="notification_sound_vib_screen_on_title">Notifications (while screen on)</string>
     <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
 
+    <!-- Notch behavior -->
+    <string name="display_cutout_mode_title">Notch behavior</string>
+    <string name="display_cutout_mode_normal">Default</string>
+    <string name="display_cutout_mode_hidden">Hidden</string>
+
 </resources>
