@@ -18,4 +18,7 @@
     <!-- Reloaded version -->
     <string name="reloaded_version">Reloaded version</string>
     <string name="caf_version">CAF revision</string>
+
+    <!--Build date-->
+    <string name="build_date">Build date</string>
 </resources>
