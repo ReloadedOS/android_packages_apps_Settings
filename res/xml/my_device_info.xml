@@ -193,13 +193,22 @@
         android:title="@string/fcc_equipment_id"
         android:summary="@string/summary_placeholder"/>
 
+    <!-- Build date -->
+    <Preference
+        android:key="build_date"
+        android:order="53"
+        android:title="@string/build_date"
+        android:summary="@string/summary_placeholder"
+        settings:allowDividerAbove="true"
+        settings:enableCopying="true"
+	settings:controller="com.android.settings.deviceinfo.BuildDatePreferenceController"/>
+
     <!-- Build number -->
     <Preference
         android:key="build_number"
-        android:order="53"
+        android:order="54"
         android:title="@string/build_number"
         android:summary="@string/summary_placeholder"
-        settings:allowDividerAbove="true"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.BuildNumberPreferenceController"/>
 
