@@ -17,4 +17,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Reloaded version -->
     <string name="reloaded_version">Reloaded version</string>
+    <string name="caf_version">CAF revision</string>
 </resources>
