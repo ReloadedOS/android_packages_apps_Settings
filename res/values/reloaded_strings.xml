@@ -45,4 +45,8 @@
     <!-- Navbar options -->
     <string name="navbar_invert_layout_title">Invert Navigation Bar layout</string>
     <string name="navbar_invert_info">This will swap the \"Back\" and \"Recents\" buttons on the navigation bar</string>
+
+    <!-- Swipe to screenshot -->
+    <string name="swipe_to_screenshot_title">Swipe to screenshot</string>
+    <string name="swipe_to_screenshot_summary">Swipe 3 fingers down the screen to take a screenshot</string>
 </resources>
