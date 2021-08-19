@@ -16,6 +16,8 @@
 
 package com.android.settings.bluetooth;
 
+import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -30,6 +32,7 @@ import android.widget.TextView;
 
 import androidx.preference.Preference;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.app.AlertActivity;
 import com.android.internal.app.AlertController;
 import com.android.settings.R;
@@ -49,8 +52,6 @@ public class BluetoothPermissionActivity extends AlertActivity implements
     private TextView messageView;
     private Button mOkButton;
     private BluetoothDevice mDevice;
-    private String mReturnPackage = null;
-    private String mReturnClass = null;
 
     private int mRequestType = 0;
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -76,6 +77,7 @@ public class BluetoothPermissionActivity extends AlertActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getWindow().addPrivateFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         Intent i = getIntent();
         String action = i.getAction();
         if (!action.equals(BluetoothDevice.ACTION_CONNECTION_ACCESS_REQUEST)) {
@@ -86,8 +88,6 @@ public class BluetoothPermissionActivity extends AlertActivity implements
         }
 
         mDevice = i.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-        mReturnPackage = i.getStringExtra(BluetoothDevice.EXTRA_PACKAGE_NAME);
-        mReturnClass = i.getStringExtra(BluetoothDevice.EXTRA_CLASS_NAME);
         mRequestType = i.getIntExtra(BluetoothDevice.EXTRA_ACCESS_REQUEST_TYPE,
                                      BluetoothDevice.REQUEST_TYPE_PHONEBOOK_ACCESS);
 
@@ -96,9 +96,9 @@ public class BluetoothPermissionActivity extends AlertActivity implements
         if (mRequestType == BluetoothDevice.REQUEST_TYPE_PROFILE_CONNECTION) {
             showDialog(getString(R.string.bluetooth_connection_permission_request), mRequestType);
         } else if (mRequestType == BluetoothDevice.REQUEST_TYPE_PHONEBOOK_ACCESS) {
-            showDialog(getString(R.string.bluetooth_phonebook_request), mRequestType);
+            showDialog(getString(R.string.bluetooth_phonebook_access_dialog_title), mRequestType);
         } else if (mRequestType == BluetoothDevice.REQUEST_TYPE_MESSAGE_ACCESS) {
-            showDialog(getString(R.string.bluetooth_map_request), mRequestType);
+            showDialog(getString(R.string.bluetooth_message_access_dialog_title), mRequestType);
         } else if (mRequestType == BluetoothDevice.REQUEST_TYPE_SIM_ACCESS) {
             showDialog(getString(R.string.bluetooth_sap_request), mRequestType);
         }
@@ -133,9 +133,9 @@ public class BluetoothPermissionActivity extends AlertActivity implements
             p.mView = createSapDialogView();
             break;
         }
-        p.mPositiveButtonText = getString(R.string.yes);
+        p.mPositiveButtonText = getString(R.string.allow);
         p.mPositiveButtonListener = this;
-        p.mNegativeButtonText = getString(R.string.no);
+        p.mNegativeButtonText = getString(R.string.deny);
         p.mNegativeButtonListener = this;
         mOkButton = mAlert.getButton(DialogInterface.BUTTON_POSITIVE);
         setupAlert();
@@ -165,7 +165,7 @@ public class BluetoothPermissionActivity extends AlertActivity implements
         String mRemoteName = Utils.createRemoteName(this, mDevice);
         mView = getLayoutInflater().inflate(R.layout.bluetooth_access, null);
         messageView = (TextView)mView.findViewById(R.id.message);
-        messageView.setText(getString(R.string.bluetooth_pb_acceptance_dialog_text,
+        messageView.setText(getString(R.string.bluetooth_phonebook_access_dialog_content,
                 mRemoteName, mRemoteName));
         return mView;
     }
@@ -174,7 +174,7 @@ public class BluetoothPermissionActivity extends AlertActivity implements
         String mRemoteName = Utils.createRemoteName(this, mDevice);
         mView = getLayoutInflater().inflate(R.layout.bluetooth_access, null);
         messageView = (TextView)mView.findViewById(R.id.message);
-        messageView.setText(getString(R.string.bluetooth_map_acceptance_dialog_text,
+        messageView.setText(getString(R.string.bluetooth_message_access_dialog_content,
                 mRemoteName, mRemoteName));
         return mView;
     }
@@ -199,14 +199,14 @@ public class BluetoothPermissionActivity extends AlertActivity implements
         sendReplyIntentToReceiver(false, true);
     }
 
-    private void sendReplyIntentToReceiver(final boolean allowed, final boolean always) {
+    @VisibleForTesting
+    void sendReplyIntentToReceiver(final boolean allowed, final boolean always) {
         Intent intent = new Intent(BluetoothDevice.ACTION_CONNECTION_ACCESS_REPLY);
 
-        if (mReturnPackage != null && mReturnClass != null) {
-            intent.setClassName(mReturnPackage, mReturnClass);
+        if (DEBUG) {
+            Log.i(TAG, "sendReplyIntentToReceiver() Request type: " + mRequestType
+                    + " mReturnPackage");
         }
-        if (DEBUG) Log.i(TAG, "sendReplyIntentToReceiver() Request type: " + mRequestType +
-                " mReturnPackage" + mReturnPackage + " mReturnClass" + mReturnClass);
 
         intent.putExtra(BluetoothDevice.EXTRA_CONNECTION_ACCESS_RESULT,
                         allowed ? BluetoothDevice.CONNECTION_ACCESS_YES
